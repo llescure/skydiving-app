@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct WeatherResultView: View {
+    let dropzone: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Text("Dropzone : \(dropzone)")
+                .navigationTitle(dropzone)
+        }
     }
 }
 
 struct WeatherResultView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherResultView()
+        WeatherResultView(dropzone: "")
     }
 }

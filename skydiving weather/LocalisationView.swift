@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct LocalisationView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @Binding var dropzone: String
+    
+    var body: some View{
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Drop Zone")
+                .font(.custom("header", size: 10))
+                .foregroundColor(Color("lightGray"))
+            TextField("", text: $dropzone)
+                .styledTextfield()
+        }
+        .padding(.bottom, 20)
+        .padding(.top, 5)
+        .padding(.horizontal, 20)
+        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.white))
+        .padding(.horizontal, 40)
     }
 }
 
 struct LocalisationView_Previews: PreviewProvider {
     static var previews: some View {
-        LocalisationView()
+        LocalisationView(dropzone: .constant(""))
     }
 }
