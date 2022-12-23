@@ -11,7 +11,7 @@ import SwiftUI
 struct skydiving_weatherApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomePageView()
         }
     }
 }
