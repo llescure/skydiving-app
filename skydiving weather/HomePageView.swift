@@ -43,7 +43,7 @@ struct HomePageView: View {
                         }
                     }
                     .navigationDestination(isPresented: $isShowingWeatherForecast) {
-                        WeatherResultView(dropzone: dropzoneSelected)
+                        WeatherResultView(dropzone: $dropzoneSelected)
                     }
                 }
             }

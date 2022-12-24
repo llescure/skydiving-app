@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct WeatherResultView: View {
-    let dropzone: String
-    
+    @Binding var dropzone: String
+        
     var body: some View {
-        NavigationView {
-            Text("Dropzone : \(dropzone)")
-                .navigationTitle(dropzone)
+        VStack {
+            NavigationView {
+                Text("Dropzone : \(dropzone)")
+                    .navigationTitle(dropzone)
+            }
+        }
+        // Used to reset the value o dropzone to empty
+        .onDisappear{
+            dropzone = ""
         }
     }
 }
 
 struct WeatherResultView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherResultView(dropzone: "")
+        WeatherResultView(dropzone: .constant(""))
     }
 }
