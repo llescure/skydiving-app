@@ -12,7 +12,7 @@ struct HomePageView: View {
     @State private var isShowingWeatherForecast = false
     
     var body: some View {
-            NavigationView {
+            NavigationStack {
                 ZStack(alignment: .bottom){
                     GeometryReader { geo in
                         Image("skydiving-homepage")
@@ -21,9 +21,9 @@ struct HomePageView: View {
                             .frame(maxWidth: geo.size.width)
                             .edgesIgnoringSafeArea(.all)
                     }
+                    VStack {
+                        LocalisationView(dropzone: $dropzoneSelected)
                         VStack {
-                            LocalisationView(dropzone: $dropzoneSelected)
-                            NavigationLink(destination: WeatherResultView(dropzone: dropzoneSelected), isActive: $isShowingWeatherForecast) {
                             Button(action : {
                                 if (!dropzoneSelected.isEmpty) {
                                     self.isShowingWeatherForecast = true
@@ -41,6 +41,9 @@ struct HomePageView: View {
                             .padding(.bottom, 60)
                             .padding(.horizontal, 40)
                         }
+                    }
+                    .navigationDestination(isPresented: $isShowingWeatherForecast) {
+                        WeatherResultView(dropzone: dropzoneSelected)
                     }
                 }
             }
