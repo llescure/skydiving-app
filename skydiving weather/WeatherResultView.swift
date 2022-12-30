@@ -12,7 +12,7 @@ struct WeatherResultView: View {
         
     var body: some View {
         VStack {
-            NavigationView {
+            NavigationStack {
                 Text("Dropzone : \(dropzone)")
                     .navigationTitle(dropzone)
             }

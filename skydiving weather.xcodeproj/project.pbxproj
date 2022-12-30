@@ -12,6 +12,7 @@
 		DBBD21D3295602C1004E0EDE /* DropZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD21D2295602C1004E0EDE /* DropZone.swift */; };
 		DBBD21D529564AD8004E0EDE /* StyledTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD21D429564AD8004E0EDE /* StyledTextfield.swift */; };
 		DBE2CADC2957646600F92290 /* DayWeatherResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2CADB2957646600F92290 /* DayWeatherResultView.swift */; };
+		DBE2CAE22958DB9700F92290 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2CAE12958DB9700F92290 /* SearchBarView.swift */; };
 		DBE842012954CB58005D7F70 /* skydiving_weatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE842002954CB58005D7F70 /* skydiving_weatherApp.swift */; };
 		DBE842032954CB58005D7F70 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE842022954CB58005D7F70 /* HomePageView.swift */; };
 		DBE842052954CB5A005D7F70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBE842042954CB5A005D7F70 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		DBBD21D2295602C1004E0EDE /* DropZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropZone.swift; sourceTree = "<group>"; };
 		DBBD21D429564AD8004E0EDE /* StyledTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextfield.swift; sourceTree = "<group>"; };
 		DBE2CADB2957646600F92290 /* DayWeatherResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherResultView.swift; sourceTree = "<group>"; };
+		DBE2CAE12958DB9700F92290 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		DBE841FD2954CB58005D7F70 /* skydiving weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "skydiving weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE842002954CB58005D7F70 /* skydiving_weatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skydiving_weatherApp.swift; sourceTree = "<group>"; };
 		DBE842022954CB58005D7F70 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		DBE841FF2954CB58005D7F70 /* skydiving weather */ = {
 			isa = PBXGroup;
 			children = (
+				DBE2CAE12958DB9700F92290 /* SearchBarView.swift */,
 				DBBD21D12955F9BC004E0EDE /* Style */,
 				DBBD21CA2955E489004E0EDE /* Models */,
 				DBE842002954CB58005D7F70 /* skydiving_weatherApp.swift */,
@@ -180,6 +183,7 @@
 				DBE8420F2955AB45005D7F70 /* WeatherResultView.swift in Sources */,
 				DBBD21D3295602C1004E0EDE /* DropZone.swift in Sources */,
 				DBBD21D02955F837004E0EDE /* ButtonIcon.swift in Sources */,
+				DBE2CAE22958DB9700F92290 /* SearchBarView.swift in Sources */,
 				DBBD21CE2955ED6C004E0EDE /* Theme.swift in Sources */,
 				DBE842112955AC6F005D7F70 /* LocalisationView.swift in Sources */,
 				DBE842012954CB58005D7F70 /* skydiving_weatherApp.swift in Sources */,
