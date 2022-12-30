@@ -11,17 +11,19 @@ import SwiftUI
 
 struct SearchBarView: View {
     
-    @State private var searchText = ""
+    @Binding var searchText : String
+    @Environment(\.dismiss) private var dismiss
+
     
     var body: some View {
         NavigationStack {
             List {
                 ForEach(searchResults, id: \.self) { name in
-                    NavigationLink {
                         Text(name)
-                    } label: {
-                        Text(name)
-                    }
+                        .onTapGesture {
+                            searchText = name
+                            dismiss()
+                        }
                 }
             }
         }
@@ -39,6 +41,6 @@ struct SearchBarView: View {
 
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarView()
+        SearchBarView(searchText: .constant(""))
     }
 }

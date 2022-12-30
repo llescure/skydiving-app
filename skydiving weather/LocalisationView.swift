@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LocalisationView: View {
     @Binding var dropzone: String
+    @Binding var isShowingDropzoneList: Bool
     
     var body: some View{
         VStack(alignment: .leading, spacing: 0) {
@@ -23,11 +24,14 @@ struct LocalisationView: View {
         .padding(.horizontal, 20)
         .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.white))
         .padding(.horizontal, 40)
+        .onTapGesture {
+            isShowingDropzoneList = true
+        }
     }
 }
 
 struct LocalisationView_Previews: PreviewProvider {
     static var previews: some View {
-        LocalisationView(dropzone: .constant(""))
+        LocalisationView(dropzone: .constant(""), isShowingDropzoneList: .constant(false))
     }
 }

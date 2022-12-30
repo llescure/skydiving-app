@@ -10,10 +10,11 @@ import SwiftUI
 struct HomePageView: View {
     @State private var dropzoneSelected: String = ""
     @State private var isShowingWeatherForecast = false
+    @State var isShowingDropzoneList : Bool = false
     
     var body: some View {
             NavigationStack {
-                ZStack(alignment: .bottom){
+                ZStack(alignment: .bottom) {
                     GeometryReader { geo in
                         Image("skydiving-homepage")
                             .resizable()
@@ -22,7 +23,7 @@ struct HomePageView: View {
                             .edgesIgnoringSafeArea(.all)
                     }
                     VStack {
-                        LocalisationView(dropzone: $dropzoneSelected)
+                        LocalisationView(dropzone: $dropzoneSelected, isShowingDropzoneList: $isShowingDropzoneList)
                         VStack {
                             Button(action : {
                                 if (!dropzoneSelected.isEmpty) {
@@ -46,6 +47,10 @@ struct HomePageView: View {
                         WeatherResultView(dropzone: $dropzoneSelected)
                     }
                 }
+            }
+            .sheet(isPresented: $isShowingDropzoneList)
+            {
+                SearchBarView(searchText: $dropzoneSelected)
             }
     }
 }
