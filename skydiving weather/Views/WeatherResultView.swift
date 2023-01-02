@@ -16,8 +16,8 @@ struct WeatherResultView: View {
             NavigationStack {
                 Text("Dropzone : \(dropzoneSelected)")
                     .navigationTitle(dropzoneSelected)
-                    Text(String(weather.temperature!))
-                    Text(String(weather.weatherDescription!))
+//                    Text(String(weather.temperature!))
+//                    Text(String(weather.weatherDescription!))
             }
         }
         // Used to reset the value o dropzone to empty

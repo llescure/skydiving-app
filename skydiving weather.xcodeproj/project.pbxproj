@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DB72B37B295F74D100EE326C /* WeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72B37A295F74D100EE326C /* WeatherInfoView.swift */; };
 		DB72B37D295F769900EE326C /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72B37C295F769900EE326C /* WeatherViewModel.swift */; };
-		DB72B380295F86BE00EE326C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72B37F295F86BE00EE326C /* LoadingView.swift */; };
 		DBBD21CE2955ED6C004E0EDE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD21CD2955ED6C004E0EDE /* Theme.swift */; };
 		DBBD21D02955F837004E0EDE /* ButtonIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD21CF2955F837004E0EDE /* ButtonIcon.swift */; };
 		DBBD21D3295602C1004E0EDE /* DropZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD21D2295602C1004E0EDE /* DropZone.swift */; };
@@ -29,7 +28,6 @@
 /* Begin PBXFileReference section */
 		DB72B37A295F74D100EE326C /* WeatherInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoView.swift; sourceTree = "<group>"; };
 		DB72B37C295F769900EE326C /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
-		DB72B37F295F86BE00EE326C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DBBD21CD2955ED6C004E0EDE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		DBBD21CF2955F837004E0EDE /* ButtonIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIcon.swift; sourceTree = "<group>"; };
 		DBBD21D2295602C1004E0EDE /* DropZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropZone.swift; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 				DBE842102955AC6F005D7F70 /* LocalisationView.swift */,
 				DBE8420E2955AB45005D7F70 /* WeatherResultView.swift */,
 				DB72B37A295F74D100EE326C /* WeatherInfoView.swift */,
-				DB72B37F295F86BE00EE326C /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,7 +220,6 @@
 				DBBD21CE2955ED6C004E0EDE /* Theme.swift in Sources */,
 				DBE842112955AC6F005D7F70 /* LocalisationView.swift in Sources */,
 				DB72B37D295F769900EE326C /* WeatherViewModel.swift in Sources */,
-				DB72B380295F86BE00EE326C /* LoadingView.swift in Sources */,
 				DBE842012954CB58005D7F70 /* skydiving_weatherApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,11 +14,52 @@ public enum WebServiceControllerError: Error {
 
 }
 
+extension Array {
+    public mutating func append(_ newElement: Element?) {
+        if let element = newElement {
+            self.append(element)
+        }
+    }
+}
+
 public struct WeatherService {
     private let apiKey: String = "3cd9eaaf200ce8b8c0ad58e98b1c9b33"
     private let baseUrl: String = "https://api.openweathermap.org/data/2.5/forecast"
 
-    func fetchWeatherData(latitude: String, longitude: String, callback: @escaping ((temperature: Double, visibility: Double, windSpeed: Double, windDegree: Double, weatherDescription: String)?, WebServiceControllerError?) -> Void) {
+    func getWeekDay(date: String?)-> String?{
+        if let strDate = date {
+            let dateFormatter = DateFormatter()
+            let currentDate = Date()
+            
+            dateFormatter.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss"
+            let convertedDate = dateFormatter.date(from: strDate)
+           
+            let hourFromDate = Calendar.current.component(.hour, from: convertedDate!)
+            
+            // Check if the current data is set for 12 o'clock
+            if (hourFromDate == 12) {
+                let dayFromDate = Calendar.current.component(.day, from: convertedDate!)
+                let currentDay = Calendar.current.component(.day, from: currentDate)
+                let difference = dayFromDate - currentDay
+                
+                dateFormatter.dateFormat = "EEEE"
+                let weekDay = dateFormatter.string(from: convertedDate!)
+                
+                switch difference {
+                case 0:
+                    return "Today"
+                case 1:
+                    return "Tomorrow"
+                default:
+                    return weekDay
+                }
+            }
+            return nil
+        }
+        return nil
+     }
+    
+    func fetchWeatherData(latitude: String, longitude: String, callback: @escaping ((temperature: [Double], visibility: [Double], windSpeed: [Double], windDegree: [Double], weatherDescription: [String], date: [String])?, WebServiceControllerError?) -> Void) {
         
         let possibleUrl = "\(baseUrl)?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)&units=metric"
         
@@ -35,18 +76,26 @@ public struct WeatherService {
 
                     do {
                         let weatherData = try decoder.decode(OpenMapWeatherData.self, from: dataFromWeather)
-
-                        guard let weatherDescription = weatherData.list.first?.weather.first?.main,
-                              let temperature = weatherData.list.first?.main.temp,
-                              let visibility = weatherData.list.first?.visibility,
-                              let windSpeed = weatherData.list.first?.wind.speed,
-                              let windDegree = weatherData.list.first?.wind.deg
-                        else {
-                                  print("Unvalid data")
-                                  callback(nil, WebServiceControllerError.invalidPayload(url))
-                                  return
-                              }
-                        callback((temperature: temperature, visibility: visibility, windSpeed: windSpeed, windDegree: windDegree, weatherDescription: weatherDescription), nil)
+                        let weatherDataSize = weatherData.list.count - 1
+                        var weatherDescription: [String] = []
+                        var date: [String] = []
+                        var temperature: [Double] = []
+                        var visibility: [Double] = []
+                        var windSpeed: [Double] = []
+                        var windDegree: [Double] = []
+                        
+                        for i in 0...weatherDataSize {
+                            // Create an array of data dated at 12 o'clock of the 5 following days
+                            if let weekDay = getWeekDay(date: weatherData.list[i].dt_txt) {
+                                weatherDescription.append(weatherData.list[i].weather.first?.main)
+                                date.append(weekDay)
+                                temperature.append(weatherData.list[i].main.temp)
+                                visibility.append(weatherData.list[i].visibility)
+                                windSpeed.append(weatherData.list[i].wind.speed)
+                                windDegree.append(weatherData.list[i].wind.deg)
+                            }
+                        }
+                        callback((temperature: temperature, visibility: visibility, windSpeed: windSpeed, windDegree: windDegree, weatherDescription: weatherDescription, date: date), nil)
                     }
                     catch let error {
                         callback(nil, WebServiceControllerError.forwared(error))

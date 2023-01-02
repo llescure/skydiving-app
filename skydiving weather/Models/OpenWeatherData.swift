@@ -16,6 +16,7 @@ struct OpenMapWeatherList: Codable {
     var main: OpenMapWeatherMain
     var wind: OpenMapWeatherWind
     var visibility: Double?
+    var dt_txt: String?
 }
 
 struct OpenMapWeatherWeather: Codable {

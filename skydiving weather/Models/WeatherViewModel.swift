@@ -9,11 +9,12 @@ import Foundation
 
 class WeatherViewModel: ObservableObject {
     private let weatherService: WeatherService = WeatherService()
-    @Published var temperature: Double?
-    @Published var visibility: Double?
-    @Published var windSpeed: Double?
-    @Published var windDegree: Double?
-    @Published var weatherDescription: String?
+    @Published var temperature: [Double] = []
+    @Published var visibility: [Double] = []
+    @Published var windSpeed: [Double] = []
+    @Published var windDegree: [Double] = []
+    @Published var weatherDescription: [String] = []
+    @Published var date: [String] = []
     @Published var isFinishedLoading: Bool = false
     
     func fetchData(for dropzoneSelected: String) {
@@ -30,6 +31,7 @@ class WeatherViewModel: ObservableObject {
                         self.windSpeed = retrievedWeather.windSpeed
                         self.windDegree = retrievedWeather.windDegree
                         self.weatherDescription = retrievedWeather.weatherDescription
+                        self.date = retrievedWeather.date
                         self.isFinishedLoading = true
                     }
                 }
