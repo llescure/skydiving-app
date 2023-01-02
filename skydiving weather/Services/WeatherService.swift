@@ -37,11 +37,13 @@ public struct WeatherService {
             let hourFromDate = Calendar.current.component(.hour, from: convertedDate!)
             
             // Check if the current data is set for 12 o'clock
+            // In that case we will get the data for the day
             if (hourFromDate == 12) {
                 let dayFromDate = Calendar.current.component(.day, from: convertedDate!)
                 let currentDay = Calendar.current.component(.day, from: currentDate)
                 let difference = dayFromDate - currentDay
                 
+                // Get the day of the week
                 dateFormatter.dateFormat = "EEEE"
                 let weekDay = dateFormatter.string(from: convertedDate!)
                 
