@@ -12,7 +12,7 @@ class WeatherViewModel: ObservableObject {
     @Published var temperature: [Double] = []
     @Published var visibility: [Double] = []
     @Published var windSpeed: [Double] = []
-    @Published var windDegree: [Double] = []
+    @Published var windOrientation: [String] = []
     @Published var weatherDescription: [String] = []
     @Published var date: [String] = []
     @Published var isFinishedLoading: Bool = false
@@ -29,7 +29,7 @@ class WeatherViewModel: ObservableObject {
                         self.temperature = retrievedWeather.temperature
                         self.visibility = retrievedWeather.visibility
                         self.windSpeed = retrievedWeather.windSpeed
-                        self.windDegree = retrievedWeather.windDegree
+                        self.windOrientation = retrievedWeather.windOrientation
                         self.weatherDescription = retrievedWeather.weatherDescription
                         self.date = retrievedWeather.date
                         self.isFinishedLoading = true

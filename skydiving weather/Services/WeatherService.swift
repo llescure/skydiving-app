@@ -59,7 +59,40 @@ public struct WeatherService {
         return nil
      }
     
-    func fetchWeatherData(latitude: String, longitude: String, callback: @escaping ((temperature: [Double], visibility: [Double], windSpeed: [Double], windDegree: [Double], weatherDescription: [String], date: [String])?, WebServiceControllerError?) -> Void) {
+    func convertVisibility(visibility: Double)->Double {
+        return (round(visibility / 1000))
+    }
+    
+    func convertWindSpeed(speed: Double)->Double {
+        return (round(speed * 3.6))
+    }
+    
+    func convertTemperature(temperature: Double)->Double {
+        return (round(temperature))
+    }
+    
+    func convertWindDegree(degree: Double)->String {
+        switch degree {
+        case 0...45:
+            return "North"
+        case 45...90:
+            return "North-East"
+        case 90...135:
+            return "East"
+        case 135...180:
+            return "South-East"
+        case 180...225:
+            return "South"
+        case 225...270:
+            return "South-West"
+        case 270...315:
+            return "West"
+        default:
+            return "North-West"
+        }
+    }
+    
+    func fetchWeatherData(latitude: String, longitude: String, callback: @escaping ((temperature: [Double], visibility: [Double], windSpeed: [Double], windOrientation: [String], weatherDescription: [String], date: [String])?, WebServiceControllerError?) -> Void) {
         
         let possibleUrl = "\(baseUrl)?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)&units=metric"
         
@@ -82,20 +115,20 @@ public struct WeatherService {
                         var temperature: [Double] = []
                         var visibility: [Double] = []
                         var windSpeed: [Double] = []
-                        var windDegree: [Double] = []
+                        var windOrientation: [String] = []
                         
                         for i in 0...weatherDataSize {
                             // Create an array of data dated at 12 o'clock of the 5 following days
                             if let weekDay = getWeekDay(date: weatherData.list[i].dt_txt) {
                                 weatherDescription.append(weatherData.list[i].weather.first?.main)
                                 date.append(weekDay)
-                                temperature.append(weatherData.list[i].main.temp)
-                                visibility.append(weatherData.list[i].visibility)
-                                windSpeed.append(weatherData.list[i].wind.speed)
-                                windDegree.append(weatherData.list[i].wind.deg)
+                                temperature.append(convertTemperature(temperature: weatherData.list[i].main.temp!))
+                                visibility.append(convertVisibility(visibility: weatherData.list[i].visibility!))
+                                windSpeed.append(convertWindSpeed(speed: weatherData.list[i].wind.speed!))
+                                windOrientation.append(convertWindDegree(degree: weatherData.list[i].wind.deg!))
                             }
                         }
-                        callback((temperature: temperature, visibility: visibility, windSpeed: windSpeed, windDegree: windDegree, weatherDescription: weatherDescription, date: date), nil)
+                        callback((temperature: temperature, visibility: visibility, windSpeed: windSpeed, windOrientation: windOrientation, weatherDescription: weatherDescription, date: date), nil)
                     }
                     catch let error {
                         callback(nil, WebServiceControllerError.forwared(error))
