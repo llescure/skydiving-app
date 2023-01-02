@@ -9,8 +9,7 @@ import Foundation
 
 class WeatherViewModel: ObservableObject {
     private let weatherService: WeatherService = WeatherService()
-    @Published var tempMin: Double?
-    @Published var tempMax: Double?
+    @Published var temperature: Double?
     @Published var visibility: Double?
     @Published var windSpeed: Double?
     @Published var windDegree: Double?
@@ -26,8 +25,7 @@ class WeatherViewModel: ObservableObject {
                 }
                 if let retrievedWeather = weather {
                     DispatchQueue.main.async {
-                        self.tempMin = retrievedWeather.tempMin
-                        self.tempMax = retrievedWeather.tempMax
+                        self.temperature = retrievedWeather.temperature
                         self.visibility = retrievedWeather.visibility
                         self.windSpeed = retrievedWeather.windSpeed
                         self.windDegree = retrievedWeather.windDegree

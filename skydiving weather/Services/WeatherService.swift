@@ -18,7 +18,7 @@ public struct WeatherService {
     private let apiKey: String = "3cd9eaaf200ce8b8c0ad58e98b1c9b33"
     private let baseUrl: String = "https://api.openweathermap.org/data/2.5/forecast"
 
-    func fetchWeatherData(latitude: String, longitude: String, callback: @escaping ((tempMin: Double, tempMax: Double, visibility: Double, windSpeed: Double, windDegree: Double, weatherDescription: String)?, WebServiceControllerError?) -> Void) {
+    func fetchWeatherData(latitude: String, longitude: String, callback: @escaping ((temperature: Double, visibility: Double, windSpeed: Double, windDegree: Double, weatherDescription: String)?, WebServiceControllerError?) -> Void) {
         
         let possibleUrl = "\(baseUrl)?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)&units=metric"
         
@@ -37,8 +37,7 @@ public struct WeatherService {
                         let weatherData = try decoder.decode(OpenMapWeatherData.self, from: dataFromWeather)
 
                         guard let weatherDescription = weatherData.list.first?.weather.first?.main,
-                              let tempMin = weatherData.list.first?.main.temp_min,
-                              let tempMax = weatherData.list.first?.main.temp_max,
+                              let temperature = weatherData.list.first?.main.temp,
                               let visibility = weatherData.list.first?.visibility,
                               let windSpeed = weatherData.list.first?.wind.speed,
                               let windDegree = weatherData.list.first?.wind.deg
@@ -47,7 +46,7 @@ public struct WeatherService {
                                   callback(nil, WebServiceControllerError.invalidPayload(url))
                                   return
                               }
-                        callback((tempMin: tempMin, tempMax: tempMax, visibility: visibility, windSpeed: windSpeed, windDegree: windDegree, weatherDescription: weatherDescription), nil)
+                        callback((temperature: temperature, visibility: visibility, windSpeed: windSpeed, windDegree: windDegree, weatherDescription: weatherDescription), nil)
                     }
                     catch let error {
                         callback(nil, WebServiceControllerError.forwared(error))

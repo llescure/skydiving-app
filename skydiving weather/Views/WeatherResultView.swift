@@ -16,7 +16,7 @@ struct WeatherResultView: View {
             NavigationStack {
                 Text("Dropzone : \(dropzoneSelected)")
                     .navigationTitle(dropzoneSelected)
-                    Text(String(weather.tempMax!))
+                    Text(String(weather.temperature!))
                     Text(String(weather.weatherDescription!))
             }
         }

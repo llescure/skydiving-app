@@ -25,8 +25,7 @@ struct OpenMapWeatherWeather: Codable {
 }
 
 struct OpenMapWeatherMain: Codable {
-    var temp_min: Double?
-    var temp_max: Double?
+    var temp: Double?
 }
 
 struct OpenMapWeatherWind: Codable {
