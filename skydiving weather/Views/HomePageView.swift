@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomePageView: View {
+    @StateObject var weatherVM: WeatherViewModel = WeatherViewModel()
     @State private var dropzoneSelected: String = ""
     @State private var isShowingWeatherForecast = false
-    @State var isShowingDropzoneList : Bool = false
     
     var body: some View {
             NavigationStack {
@@ -23,14 +23,14 @@ struct HomePageView: View {
                             .edgesIgnoringSafeArea(.all)
                     }
                     VStack {
-                        LocalisationView(dropzone: $dropzoneSelected, isShowingDropzoneList: $isShowingDropzoneList)
+                        LocalisationView(dropzoneSelected: $dropzoneSelected)
                         VStack {
                             Button(action : {
                                 if (!dropzoneSelected.isEmpty) {
-                                    self.isShowingWeatherForecast = true
+                                    weatherVM.fetchData(for: dropzoneSelected)
                                 }
                             }) {
-                                Label("Ça saute ?", systemImage: "airplane.departure")
+                                Label("Can I jump?", systemImage: "airplane.departure")
                                     .bold()
                                     .padding(10)
                                     .labelStyle(.buttonIcon)
@@ -43,14 +43,10 @@ struct HomePageView: View {
                             .padding(.horizontal, 40)
                         }
                     }
-                    .navigationDestination(isPresented: $isShowingWeatherForecast) {
-                        WeatherResultView(dropzone: $dropzoneSelected)
+                    .navigationDestination(isPresented: $weatherVM.isFinishedLoading) {
+                        WeatherResultView(dropzoneSelected: $dropzoneSelected, weather: weatherVM)
                     }
                 }
-            }
-            .sheet(isPresented: $isShowingDropzoneList)
-            {
-                SearchBarView(searchText: $dropzoneSelected)
             }
     }
 }

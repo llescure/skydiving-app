@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-import SwiftUI
-
-struct SearchBarView: View {
+struct DropzoneAutocompleteView: View {
     
-    @Binding var searchText : String
+    @Binding var dropzoneSelected : String
     @Environment(\.dismiss) private var dismiss
 
     
@@ -21,26 +19,26 @@ struct SearchBarView: View {
                 ForEach(searchResults, id: \.self) { name in
                         Text(name)
                         .onTapGesture {
-                            searchText = name
+                            dropzoneSelected = name
                             dismiss()
                         }
                 }
             }
         }
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .searchable(text: $dropzoneSelected, placement: .navigationBarDrawer(displayMode: .always))
     }
 
     var searchResults: [String] {
-        if searchText.isEmpty {
+        if dropzoneSelected.isEmpty {
             return Dropzone.frenchDropzonesList.sorted()
         } else {
-            return Dropzone.frenchDropzonesList.sorted().filter { $0.contains(searchText) }
+            return Dropzone.frenchDropzonesList.sorted().filter { $0.contains(dropzoneSelected) }
         }
     }
 }
 
-struct SearchBarView_Previews: PreviewProvider {
+struct DropzoneAutocomplete_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarView(searchText: .constant(""))
+        DropzoneAutocompleteView(dropzoneSelected: .constant(""))
     }
 }

@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct LocalisationView: View {
-    @Binding var dropzone: String
-    @Binding var isShowingDropzoneList: Bool
-    
+    @Binding var dropzoneSelected: String
+    @State var isShowingDropzoneList : Bool = false
+
     var body: some View{
         VStack(alignment: .leading, spacing: 0) {
             Text("Drop Zone")
                 .font(.custom("header", size: 10))
                 .foregroundColor(Color("lightGray"))
-            TextField("", text: $dropzone)
+            TextField("", text: $dropzoneSelected)
+                .disabled(true)
                 .styledTextfield()
         }
         .padding(.bottom, 20)
@@ -27,11 +28,15 @@ struct LocalisationView: View {
         .onTapGesture {
             isShowingDropzoneList = true
         }
+        .sheet(isPresented: $isShowingDropzoneList)
+         {
+            DropzoneAutocompleteView(dropzoneSelected: $dropzoneSelected)
+        }
     }
 }
 
 struct LocalisationView_Previews: PreviewProvider {
     static var previews: some View {
-        LocalisationView(dropzone: .constant(""), isShowingDropzoneList: .constant(false))
+        LocalisationView(dropzoneSelected: .constant(""))
     }
 }

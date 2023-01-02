@@ -50,6 +50,13 @@
             ReferencedContainer = "container:skydiving weather.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OPENWEATHER_API_KEY"
+            value = "3cd9eaaf200ce8b8c0ad58e98b1c9b33&#10;3cd9eaaf200ce8b8c0ad58e98b1c9b33&#10;3cd9eaaf200ce8b8c0ad58e98b1c9b33&#10;3cd9eaaf200ce8b8c0ad58e98b1c9b33&#10;"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
