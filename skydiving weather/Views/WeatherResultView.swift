@@ -26,6 +26,8 @@ struct WeatherResultView: View {
                             .listRowSeparatorTint(.white)
                     }
                 }
+                .listStyle(.plain)
+                .padding(.horizontal, 14)
             }
             
         }
