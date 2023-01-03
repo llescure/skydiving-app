@@ -13,41 +13,41 @@ struct HomePageView: View {
     @State private var isShowingWeatherForecast = false
     
     var body: some View {
-            NavigationStack {
-                ZStack(alignment: .bottom) {
-                    GeometryReader { geo in
-                        Image("skydiving-homepage")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(maxWidth: geo.size.width)
-                    }
-                        .edgesIgnoringSafeArea(.all)
+        NavigationStack {
+            ZStack(alignment: .bottom) {
+                GeometryReader { geo in
+                    Image("skydiving-homepage")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(maxWidth: geo.size.width)
+                }
+                .edgesIgnoringSafeArea(.all)
+                VStack {
+                    LocalisationView(dropzoneSelected: $dropzoneSelected)
                     VStack {
-                        LocalisationView(dropzoneSelected: $dropzoneSelected)
-                        VStack {
-                            Button(action : {
-                                if (!dropzoneSelected.isEmpty) {
-                                    weatherVM.fetchData(for: dropzoneSelected)
-                                }
-                            }) {
-                                Label("Can I jump?", systemImage: "airplane.departure")
-                                    .bold()
-                                    .padding(10)
-                                    .labelStyle(.buttonIcon)
-                                // Use of .infinity to have the button size automatically adjust depending on the screen size
-                                    .frame(maxWidth: .infinity)
+                        Button(action : {
+                            if (!dropzoneSelected.isEmpty) {
+                                weatherVM.fetchData(for: dropzoneSelected)
                             }
-                            .buttonStyle(.borderedProminent)
-                            .tint(Color("sky"))
-                            .padding(.bottom, 60)
-                            .padding(.horizontal, 40)
+                        }) {
+                            Label("Can I skydive?", systemImage: "airplane.departure")
+                                .bold()
+                                .padding(10)
+                                .labelStyle(.buttonIcon)
+                            // Use of .infinity to have the button size automatically adjust depending on the screen size
+                                .frame(maxWidth: .infinity)
                         }
-                    }
-                    .navigationDestination(isPresented: $weatherVM.isFinishedLoading) {
-                        WeatherResultView(dropzoneSelected: $dropzoneSelected, weather: weatherVM)
+                        .buttonStyle(.borderedProminent)
+                        .tint(Color("sky"))
+                        .padding(.bottom, 60)
+                        .padding(.horizontal, 40)
                     }
                 }
+                .navigationDestination(isPresented: $weatherVM.isFinishedLoading) {
+                    WeatherResultView(dropzoneSelected: $dropzoneSelected, weather: weatherVM)
+                }
             }
+        }
     }
 }
 

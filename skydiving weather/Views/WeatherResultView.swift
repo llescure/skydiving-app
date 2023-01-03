@@ -17,6 +17,7 @@ struct WeatherResultView: View {
                 .font(.title)
                 .bold()
                 .multilineTextAlignment(.center)
+                .accessibilityAddTraits(.isHeader)
             NavigationStack {
                 List {
                     ForEach(weather.weatherInfoByDay) { dayInfo in

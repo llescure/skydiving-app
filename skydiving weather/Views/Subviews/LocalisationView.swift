@@ -25,6 +25,7 @@ struct LocalisationView: View {
         .padding(.horizontal, 20)
         .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.white))
         .padding(.horizontal, 40)
+        .accessibilityLabel("Enter Dropzone")
         .onTapGesture {
             isShowingDropzoneList = true
         }

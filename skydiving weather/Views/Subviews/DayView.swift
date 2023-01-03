@@ -18,6 +18,7 @@ struct DayView: View {
                 Text(dayInfo.date)
             }
             .accessibilityAddTraits(.isHeader)
+            .accessibilityElement(children: .combine)
             .font(.headline)
             .bold()
             .padding(.leading, -30)
@@ -25,18 +26,22 @@ struct DayView: View {
             HStack {
                 VStack (alignment: .leading, spacing: 6) {
                     Label("\(String(format:"%.0f", dayInfo.windSpeed)) km/h", systemImage: "wind")
-                        .accessibilityLabel("\(dayInfo.windSpeed) km/h")
+                        .accessibilityLabel("Speed of wind")
+                        .accessibilityValue("\(dayInfo.windSpeed) km/h")
                     Label("\(String(format:"%.0f", dayInfo.temperature))°C", systemImage: "thermometer.medium")
-                        .accessibilityLabel("\(dayInfo.temperature) degrees")
+                        .accessibilityLabel("Temperature in Celsius")
+                        .accessibilityValue("\(dayInfo.temperature) degrees")
                 }
                 .font(.caption)
                 Spacer()
                     .frame(width: 60)
                 VStack (alignment: .leading, spacing: 6) {
                     Label("\(dayInfo.windOrientation)", systemImage: "paperplane.circle")
-                        .accessibilityLabel("\(dayInfo.windOrientation)")
+                        .accessibilityLabel("Wind orientation")
+                        .accessibilityValue("\(dayInfo.windOrientation)")
                     Label("\(String(format:"%.0f", dayInfo.visibility)) km", systemImage: "binoculars")
-                        .accessibilityLabel("\(dayInfo.visibility) km")
+                        .accessibilityLabel("Visibility")
+                        .accessibilityValue("\(dayInfo.visibility) km")
                 }
                 .font(.caption)
             }
