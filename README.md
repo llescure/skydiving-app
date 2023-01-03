@@ -15,7 +15,7 @@ I used the free API from [OpenWeather](https://openweathermap.org/).
 
 This app tells you if skydiving is possible in your dropzone for the next 4 days by giving you a short explanation on the weather as well as the key metrics (temperature, visibility, wind strength and wind orientation).
 
-You can choose your dropzone among 36 dropzones in France.
+You can choose your dropzone among 36 dropzones in France. I hardcoded them using the [FFP website](https://www.ffp.asso.fr/ou-pratiquer/liste-de-toutes-les-structures-ffp/) and entered the city next to them in OpenWeather to have the longitude and latitude.
 
 ----
 
