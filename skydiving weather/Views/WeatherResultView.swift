@@ -20,7 +20,7 @@ struct WeatherResultView: View {
                 .accessibilityAddTraits(.isHeader)
             NavigationStack {
                 List {
-                    ForEach(weather.weatherInfoByDay) { dayInfo in
+                    ForEach(weather.weatherInfoByDay.prefix(4)) { dayInfo in
                         DayView(dayInfo: dayInfo)
                             .listRowBackground(Color(dayInfo.color))
                             .listRowSeparatorTint(.white)
