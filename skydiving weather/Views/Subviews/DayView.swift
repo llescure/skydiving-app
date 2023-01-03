@@ -31,6 +31,7 @@ struct DayView: View {
                 }
                 .font(.caption)
                 Spacer()
+                    .frame(width: 60)
                 VStack (alignment: .leading, spacing: 6) {
                     Label("\(dayInfo.windOrientation)", systemImage: "paperplane.circle")
                         .accessibilityLabel("\(dayInfo.windOrientation)")
