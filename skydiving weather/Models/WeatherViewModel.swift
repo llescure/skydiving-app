@@ -9,12 +9,7 @@ import Foundation
 
 class WeatherViewModel: ObservableObject {
     private let weatherService: WeatherService = WeatherService()
-    @Published var temperature: [Double] = []
-    @Published var visibility: [Double] = []
-    @Published var windSpeed: [Double] = []
-    @Published var windOrientation: [String] = []
-    @Published var weatherDescription: [String] = []
-    @Published var date: [String] = []
+    @Published var weatherInfoByDay: [WeatherInfoByDay] = []
     @Published var isFinishedLoading: Bool = false
     
     func fetchData(for dropzoneSelected: String) {
@@ -26,12 +21,7 @@ class WeatherViewModel: ObservableObject {
                 }
                 if let retrievedWeather = weather {
                     DispatchQueue.main.async {
-                        self.temperature = retrievedWeather.temperature
-                        self.visibility = retrievedWeather.visibility
-                        self.windSpeed = retrievedWeather.windSpeed
-                        self.windOrientation = retrievedWeather.windOrientation
-                        self.weatherDescription = retrievedWeather.weatherDescription
-                        self.date = retrievedWeather.date
+                        self.weatherInfoByDay = retrievedWeather
                         self.isFinishedLoading = true
                     }
                 }

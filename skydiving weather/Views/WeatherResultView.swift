@@ -10,17 +10,25 @@ import SwiftUI
 struct WeatherResultView: View {
     @Binding var dropzoneSelected: String
     var weather: WeatherViewModel = WeatherViewModel()
-        
+    
     var body: some View {
         VStack {
+            Text(dropzoneSelected)
+                .font(.title)
+                .bold()
+                .multilineTextAlignment(.center)
             NavigationStack {
-                Text("Dropzone : \(dropzoneSelected)")
-                    .navigationTitle(dropzoneSelected)
-//                    Text(String(weather.temperature!))
-//                    Text(String(weather.weatherDescription!))
+                List {
+                    ForEach(weather.weatherInfoByDay) { dayInfo in
+                        DayView(dayInfo: dayInfo)
+                            .listRowBackground(Color(dayInfo.color))
+                            .listRowSeparatorTint(.white)
+                    }
+                }
             }
+            
         }
-        // Used to reset the value o dropzone to empty
+        // Used to reset the value of dropzone to empty
         .onDisappear{
             dropzoneSelected = ""
         }
