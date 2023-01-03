@@ -9,7 +9,7 @@ As a skydiver, one of our main concern is to know if the weather makes skydiving
 It depends of three criteria :
 * **Wind strength:** it must be inferior to 35km/h
 * **Visibility:** it must be superior to 4km
-* **Lack of rain:**
+* **Lack of rain**
 
 I used the free API from [OpenWeather](https://openweathermap.org/).
 
