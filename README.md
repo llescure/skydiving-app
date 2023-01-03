@@ -7,7 +7,7 @@ The aim of this app was to learn the basics of **SwiftUi** in more or less 3 day
 As a skydiver, one of our main concern is to know if the weather makes skydiving possible or not. 
 
 It depends of three criteria :
-* **Wind strenght:** it must be inferior to 35km/h
+* **Wind strength:** it must be inferior to 35km/h
 * **Visibility:** it must be superior to 4km
 * **Lack of rain:**
 
