@@ -20,8 +20,8 @@ struct HomePageView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(maxWidth: geo.size.width)
-                            .edgesIgnoringSafeArea(.all)
                     }
+                        .edgesIgnoringSafeArea(.all)
                     VStack {
                         LocalisationView(dropzoneSelected: $dropzoneSelected)
                         VStack {
