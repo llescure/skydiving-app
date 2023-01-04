@@ -140,7 +140,7 @@ public struct WeatherService {
         else if (visibility < 3000) {
             return "The visibility is not good. But there may be some chance to skydive if the weather clears. Keep checking the weather forecast"
         }
-        else if (windSpeed * 3.6 < 35) {
+        else if (windSpeed * 3.6 > 35) {
             return "It's too windy to go skydiving right now. Keep checking the weather forecast"
         }
         return "It's cloudy all day but if the clouds are high enough, skydiving might be possible!"
