@@ -123,10 +123,10 @@ public struct WeatherService {
     
     func getDescription(temperature: Double, weatherType: String, visibility: Double, windSpeed: Double)->String {
         if (weatherType == "Clear" && visibility >= 3000 && windSpeed * 3.6 < 35 && temperature >= 10) {
-            return "The weather is ideal for skydiving. The wind is less than 35 km/h. The sky is clear with a visibility higher than 3km, without rain."
+            return "The weather is ideal for skydiving. The wind is less than 35 km/h. The sky is clear with a visibility higher than 3 km, without rain."
         }
         else if (weatherType == "Clear" && visibility >= 3000 && windSpeed * 3.6 < 35 && temperature < 10) {
-            return "You can go skydiving but it will be cold! Don't forget that we lose 20 degrees between the ground temperature and the temperature at 4000 meters. Be sure to check that your dropzone is open. Most of them are closed during winter"
+            return "You can go skydiving but it will be cold! We lose 30 degrees between the ground and the temperature at 4000 meters. Check that your dropzone is open. Most of them are closed during winter."
         }
         else if (weatherType == "Rain") {
             return "Rain is expected all day, so there is very little chance of skydiving."
@@ -138,10 +138,10 @@ public struct WeatherService {
             return "Snow is forecast for the day, even if there is some sunshine, are you sure you want to try the -20°C up there ?"
         }
         else if (visibility < 3000) {
-            return "The visibility is not good. But there may be some chance to skydive if the weather clears. Keep checking the weather forecast"
+            return "The visibility is not good. But there may be some chance to skydive if the weather clears. Keep checking the weather forecast."
         }
         else if (windSpeed * 3.6 > 35) {
-            return "It's too windy to go skydiving right now. Keep checking the weather forecast"
+            return "It's too windy to go skydiving right now. Keep checking the weather forecast."
         }
         return "It's cloudy all day but if the clouds are high enough, skydiving might be possible!"
     }

@@ -31,7 +31,7 @@ struct KeyMetricsView: View {
                     .accessibilityValue("\(dayInfo.visibility) km")
             }
         }
-        .frame(height: 80)
+        .frame(height: 130)
         .font(.subheadline)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB48152E29655D720034273C /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB48152D29655D720034273C /* StyledLabel.swift */; };
 		DB72B37D295F769900EE326C /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72B37C295F769900EE326C /* WeatherViewModel.swift */; };
 		DBBD21D02955F837004E0EDE /* ButtonIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD21CF2955F837004E0EDE /* ButtonIcon.swift */; };
 		DBBD21D3295602C1004E0EDE /* DropZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD21D2295602C1004E0EDE /* DropZone.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB48152D29655D720034273C /* StyledLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledLabel.swift; sourceTree = "<group>"; };
 		DB72B37C295F769900EE326C /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		DBBD21CF2955F837004E0EDE /* ButtonIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIcon.swift; sourceTree = "<group>"; };
 		DBBD21D2295602C1004E0EDE /* DropZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropZone.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				DBBD21CF2955F837004E0EDE /* ButtonIcon.swift */,
 				DBBD21D429564AD8004E0EDE /* StyledTextfield.swift */,
+				DB48152D29655D720034273C /* StyledLabel.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBE842032954CB58005D7F70 /* HomePageView.swift in Sources */,
+				DB48152E29655D720034273C /* StyledLabel.swift in Sources */,
 				DBE7BB7B29646B2200D805AA /* DayView.swift in Sources */,
 				DBBD21D529564AD8004E0EDE /* StyledTextfield.swift in Sources */,
 				DBE7BB79296462CB00D805AA /* WeatherInfoByDayModel.swift in Sources */,

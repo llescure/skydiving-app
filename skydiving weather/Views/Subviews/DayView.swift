@@ -12,18 +12,14 @@ struct DayView: View {
     let dayInfo: WeatherInfoByDay
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: dayInfo.weatherSystemImage)
-                    .frame(width: 28)
-                Text(dayInfo.date)
-            }
+        VStack(alignment: .leading, spacing: 10) {
+            Label(dayInfo.date, systemImage: dayInfo.weatherSystemImage)
+            .labelStyle(.styledLabel)
             .accessibilityAddTraits(.isHeader)
             .accessibilityElement(children: .combine)
             .font(.title3)
             .bold()
-            .padding(.leading, -30)
-            Spacer()
+            .padding(.leading, -20)
             if (isShowingKeyMetrics) {
                 KeyMetricsView(dayInfo: dayInfo)
             }

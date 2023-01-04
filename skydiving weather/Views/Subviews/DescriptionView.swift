@@ -18,9 +18,9 @@ struct DescriptionView: View {
                 .accessibilityLabel("Temperature in Celsius")
                 .accessibilityValue("\(dayInfo.temperature) degrees")
                 .labelStyle(.buttonIcon)
-                .font(.caption)
+                .font(.caption2)
         }
-        .frame(height: 80)
+        .frame(height: 130)
     }
 }
 
