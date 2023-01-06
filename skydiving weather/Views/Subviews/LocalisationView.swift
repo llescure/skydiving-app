@@ -15,7 +15,7 @@ struct LocalisationView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Drop Zone")
                 .font(.custom("header", size: 10))
-                .foregroundColor(Color("lightGray"))
+                .foregroundColor(Color("lightgray"))
             TextField("", text: $dropzoneSelected)
                 .disabled(true)
                 .styledTextfield()

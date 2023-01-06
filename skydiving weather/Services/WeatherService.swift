@@ -113,12 +113,12 @@ public struct WeatherService {
     
     func getColor(temperature: Double, weatherType: String, visibility: Double, windSpeed: Double)->String {
         if (weatherType == "Clear" && visibility >= 3000 && windSpeed * 3.6 < 35) {
-            return "okGreen"
+            return "okgreen"
         }
         else if (weatherType == "Rain" || weatherType == "Snow" || weatherType == "Thunderstorm") {
-            return "impossibleRed"
+            return "impossiblered"
         }
-        return "mediumOrange"
+        return "mediumorange"
     }
     
     func getDescription(temperature: Double, weatherType: String, visibility: Double, windSpeed: Double)->String {
