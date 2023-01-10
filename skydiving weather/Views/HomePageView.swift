@@ -10,7 +10,6 @@ import SwiftUI
 struct HomePageView: View {
     @StateObject var weatherVM: WeatherViewModel = WeatherViewModel()
     @State private var dropzoneSelected: String = ""
-    @State private var isShowingWeatherForecast = false
     
     var body: some View {
         NavigationStack {
